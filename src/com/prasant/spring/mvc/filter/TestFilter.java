@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 /**
  * Servlet Filter implementation class TestFilter
  */
-@WebFilter("/*")
+//@WebFilter("/*")
 public class TestFilter implements Filter {
 
     /**
@@ -36,6 +36,7 @@ public class TestFilter implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		// TODO Auto-generated method stub
 		// place your code here
+		
 		System.out.println(((HttpServletRequest)request).getRequestURI());
 			
 		// pass the request along the filter chain
