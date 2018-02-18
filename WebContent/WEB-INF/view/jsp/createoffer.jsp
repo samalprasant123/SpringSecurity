@@ -13,7 +13,7 @@
 
 <body>
 	<sf:form method="post"
-		action="${pageContext.request.contextPath}/offercreated"
+		action="${pageContext.request.contextPath}/docreate"
 		commandName="offer">
 		<table class="offertable">
 			<tr>

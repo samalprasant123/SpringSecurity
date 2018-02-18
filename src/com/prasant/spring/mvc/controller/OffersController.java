@@ -33,7 +33,7 @@ public class OffersController {
 		return "createoffer";
 	}
 	
-	@RequestMapping(value="/offercreated", method=RequestMethod.POST)
+	@RequestMapping(value="/docreate", method=RequestMethod.POST)
 	public String offerCreated(Model model, @Valid Offer offer, BindingResult bindingResult) {
 		if (bindingResult.hasErrors()) {
 			return "createoffer";
