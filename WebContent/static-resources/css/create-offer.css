@@ -1,0 +1,56 @@
+@charset "ISO-8859-1";
+.offertable {
+	width: 400px;
+	padding: 10px;
+	border: 1px solid blue;
+}
+
+input[type=text] {
+	width: 250px;
+}
+
+textarea {
+	width: 250px;
+	height: 200px;
+}
+
+.label {
+	text-align: right;
+	vertical-align: top;
+}
+
+.control {
+	margin-left: 10px;
+}
+
+.error {
+	color: red;
+	font-size: small;
+	margin-left: 10px;
+}
+
+table.offerDisplayTable, td.offerDisplayTd {
+	border: 1px solid black;
+}
+
+th.offerDisplayTh {
+ 	border: 1px solid black;
+ 	color: green;
+}
+
+td.offerDisplayTd {
+ 	border: 1px solid black;
+ 	color: blue;
+}
+
+.homeDiv {
+	height: 25px;
+	background-color: powderblue;
+}
+
+.homeP {
+	text-align: center;
+	color: aqua;
+	padding-top: 4px;
+}
+
