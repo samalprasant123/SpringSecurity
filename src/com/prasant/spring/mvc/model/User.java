@@ -1,5 +1,6 @@
 package com.prasant.spring.mvc.model;
 
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
@@ -7,13 +8,18 @@ import com.prasant.spring.mvc.validator.ValidEmail;
 
 public class User {
 
-	@Pattern(regexp="[a-zA-Z0-9]+", message="Username must be alphabets and digits only")
+	@NotBlank(message="Username cannot be blank")
+	@Size(min=5, max=15, message="Username must be between 5 and 15 characters")
+	@Pattern(regexp="^\\w{5,}$", message="Username must be alphabets, digits and underscore only")
 	private String username;
 	
+	@NotBlank(message="Email cannot be blank")
 	@ValidEmail
 	private String email;
 	
-	@Size(min=3, max=20, message="Password must be between 3 and 20 characters")
+	@NotBlank(message="Password cannot be blank")
+	@Pattern(regexp="^\\S+$", message="Password cannot contain spaces")
+	@Size(min=5, max=20, message="Password must be between 5 and 20 characters")
 	private String password;
 	
 	private boolean enabled = false;

@@ -19,20 +19,26 @@
 			<tr>
 				<td class="label">Username:</td>
 				<td><sf:input class="control" type="text" name="username"
-						path="username" placeholder="Enter name" /><br /> <sf:errors
-						path="username" cssClass="error"></sf:errors></td>
+						path="username" placeholder="Enter name" />
+					<div class="error">
+						<sf:errors path="username"></sf:errors>
+					</div></td>
 			</tr>
 			<tr>
 				<td class="label">Email:</td>
 				<td><sf:input class="control" type="text" name="email"
-						path="email" placeholder="Enter email" /><br /> <sf:errors
-						path="email" cssClass="error"></sf:errors></td>
+						path="email" placeholder="Enter email" />
+					<div class="error">
+						<sf:errors path="email"></sf:errors>
+					</div></td>
 			</tr>
 			<tr>
 				<td class="label">Password:</td>
 				<td><sf:input class="control" type="password" name="password"
-						path="password" placeholder="Enter password" /><br /> <sf:errors
-						path="password" cssClass="error"></sf:errors></td>
+						path="password" placeholder="Enter password" />
+					<div class="error">
+						<sf:errors path="password"></sf:errors>
+					</div></td>
 			</tr>
 			<tr>
 				<td class="label">Confirm Password:</td>
