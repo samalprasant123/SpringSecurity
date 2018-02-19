@@ -33,5 +33,10 @@
 				value="${_csrf.token}" />
 		</table>
 	</form>
+	<br>
+	<p>
+		<a href="${pageContext.request.contextPath}/newaccount">Create Account</a>
+	</p>
+	
 </body>
 </html>
