@@ -4,6 +4,7 @@ import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -27,5 +28,12 @@ public class UserDAO {
 		jdbcTemplate.update(sql1, paramMap);
 		String sql2 = "INSERT INTO authorities VALUES (:username, :authority)";
 		return jdbcTemplate.update(sql2, paramMap) == 1;
+	}
+
+	public boolean getUser(String username) {
+		String sql = "SELECT COUNT(*) FROM users where username = :username";
+		MapSqlParameterSource paramMap = new MapSqlParameterSource();
+		paramMap.addValue("username", username);
+		return jdbcTemplate.queryForObject(sql, paramMap, Integer.class) == 1;
 	}
 }

@@ -1,5 +1,7 @@
 package com.prasant.spring.mvc.service;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +16,10 @@ public class UserService {
 	
 	public boolean createUser(User user) {
 		return userDao.create(user);
+	}
+
+	public boolean exitUser(String username) {
+		return userDao.getUser(username);
 	}
 
 }

@@ -2,7 +2,10 @@ package com.prasant.spring.mvc.controller;
 
 import javax.validation.Valid;
 
+import org.apache.derby.shared.common.error.DerbySQLIntegrityConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -36,7 +39,17 @@ public class LoginController {
 		}
 		user.setAuthority("user");
 		user.setEnabled(true);
-		userService.createUser(user);
+		
+		if (userService.exitUser(user.getUsername())) {
+			bindingResult.rejectValue("username", "DuplicateKey.user.username", "User already exists.");
+			return "newaccount";
+		}
+		try {
+			userService.createUser(user);
+		} catch (DuplicateKeyException e) {
+			bindingResult.rejectValue("username", "DuplicateKey.user.username", "User already exists.");
+			return "newaccount";
+		}
 		return "accountcreated";
 	}
 
