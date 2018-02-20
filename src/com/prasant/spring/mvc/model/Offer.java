@@ -9,13 +9,13 @@ public class Offer {
 	
 	private int id;
 	
-	@Pattern(regexp="[a-zA-Z ]+", message="Name must be alphabets only")
+	@Pattern(regexp="[a-zA-Z ]+")
 	private String name;
 	
 	@ValidEmail
 	private String email;
 	
-	@Size(min=10, max=200, message="Text must be between 10 and 200 characters")
+	@Size(min=10, max=200)
 	private String text;
 	
 	public Offer() {

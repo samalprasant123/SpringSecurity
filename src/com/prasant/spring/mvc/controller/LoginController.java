@@ -41,13 +41,13 @@ public class LoginController {
 		user.setEnabled(true);
 		
 		if (userService.exitUser(user.getUsername())) {
-			bindingResult.rejectValue("username", "DuplicateKey.user.username", "User already exists.");
+			bindingResult.rejectValue("username", "DuplicateKey.user.username");
 			return "newaccount";
 		}
 		try {
 			userService.createUser(user);
 		} catch (DuplicateKeyException e) {
-			bindingResult.rejectValue("username", "DuplicateKey.user.username", "User already exists.");
+			bindingResult.rejectValue("username", "DuplicateKey.user.username");
 			return "newaccount";
 		}
 		return "accountcreated";

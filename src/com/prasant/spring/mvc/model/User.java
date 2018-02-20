@@ -8,18 +8,18 @@ import com.prasant.spring.mvc.validator.ValidEmail;
 
 public class User {
 
-	@NotBlank(message="Username cannot be blank")
-	@Size(min=5, max=15, message="Username must be between 5 and 15 characters")
-	@Pattern(regexp="^\\w{5,}$", message="Username must be alphabets, digits and underscore only")
+	@NotBlank
+	@Size(min=5, max=15)
+	@Pattern(regexp="^\\w{5,}$")
 	private String username;
 	
-	@NotBlank(message="Email cannot be blank")
+	@NotBlank
 	@ValidEmail
 	private String email;
 	
-	@NotBlank(message="Password cannot be blank")
-	@Pattern(regexp="^\\S+$", message="Password cannot contain spaces")
-	@Size(min=5, max=20, message="Password must be between 5 and 20 characters")
+	@NotBlank
+	@Pattern(regexp="^\\S+$")
+	@Size(min=5, max=20)
 	private String password;
 	
 	private boolean enabled = false;
