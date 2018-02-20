@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="sf"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -22,7 +23,7 @@ function canSubmit() {
 	if (password == cpassword) {
 		return true;
 	} else {
-		alert("Passwords do not match.");
+		alert("<fmt:message key='Unmatched.user.password' />");
 		return false;
 	}
 }
@@ -33,12 +34,12 @@ function matchPassword() {
 	if (cpassword.length >= 5) {
 		if (password == cpassword) {
 			/* $("#matchpass").css("color", "green"); */
-			$("#matchpass").text("Passwords match.");
+			$("#matchpass").text("<fmt:message key='Matched.user.password' />");
 			$("#matchpass").addClass("valid");
 			$("#matchpass").removeClass("error");
 		} else {
 			/* $("#matchpass").css('color', 'red'); */
-			$("#matchpass").text("Passwords do not match.");
+			$("#matchpass").text("<fmt:message key='Unmatched.user.password' />");
 			$("#matchpass").addClass("error");
 			$("#matchpass").removeClass("valid");
 		}
