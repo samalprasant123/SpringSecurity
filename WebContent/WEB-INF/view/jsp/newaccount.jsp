@@ -7,15 +7,56 @@
 <link
 	href="${pageContext.request.contextPath}/static/css/create-offer.css"
 	rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="${pageContext.request.contextPath}/static/jquery/jquery-3.3.1.min.js"></script>
+
+<script type="text/javascript">
+function onLoad() {
+	$("#password").keyup(matchPassword);
+	$("#cpassword").keyup(matchPassword);
+	$("#userForm").submit(canSubmit);
+}
+
+function canSubmit() {
+	var password = $("#password").val();
+	var cpassword = $("#cpassword").val();
+	if (password == cpassword) {
+		return true;
+	} else {
+		alert("Passwords do not match.");
+		return false;
+	}
+}
+
+function matchPassword() {
+	var password = $("#password").val();
+	var cpassword = $("#cpassword").val();
+	if (cpassword.length >= 5) {
+		if (password == cpassword) {
+			/* $("#matchpass").css("color", "green"); */
+			$("#matchpass").text("Passwords match.");
+			$("#matchpass").addClass("valid");
+			$("#matchpass").removeClass("error");
+		} else {
+			/* $("#matchpass").css('color', 'red'); */
+			$("#matchpass").text("Passwords do not match.");
+			$("#matchpass").addClass("error");
+			$("#matchpass").removeClass("valid");
+		}
+	}
+}
+
+$(document).ready(onLoad);
+</script>
+
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>New Account</title>
 </head>
 <body>
 	<h2>Create New Account</h2>
-	<sf:form method="post"
+	<sf:form id="userForm" method="post"
 		action="${pageContext.request.contextPath}/createaccount"
 		commandName="user">
-		<table class="offertable" style="width: 420px;">
+		<table class="offertable" style="width: 460px;">
 			<tr>
 				<td class="label">Username:</td>
 				<td><sf:input class="control" type="text" name="username"
@@ -34,7 +75,7 @@
 			</tr>
 			<tr>
 				<td class="label">Password:</td>
-				<td><sf:input class="control" type="password" name="password"
+				<td><sf:input id="password" class="control" type="password" name="password"
 						path="password" placeholder="Enter password" />
 					<div class="error">
 						<sf:errors path="password"></sf:errors>
@@ -42,8 +83,10 @@
 			</tr>
 			<tr>
 				<td class="label">Confirm Password:</td>
-				<td><input class="control" type="password" name="cpassword"
-					placeholder="Enter password again" /></td>
+				<td><input id="cpassword" class="control" type="password" name="cpassword"
+					placeholder="Enter password again" />
+					<div id="matchpass" style="margin-left: 10px;"></div>
+				 </td>
 			</tr>
 			<tr>
 				<td class="label"></td>
