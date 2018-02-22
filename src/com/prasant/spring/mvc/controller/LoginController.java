@@ -52,5 +52,10 @@ public class LoginController {
 		}
 		return "accountcreated";
 	}
+	
+	@RequestMapping("/logout")
+	public String showLogout() {
+		return "logout";
+	}
 
 }

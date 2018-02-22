@@ -24,6 +24,16 @@
 		<a href="${pageContext.request.contextPath}/createoffer">Create
 			Offer</a>
 	</p>
+
+	<p>
+		<c:url var="logoutUrl" value="/logout"/>
+		<form action="${logoutUrl}" method="post" id="logout123">
+    		<!-- <input type="submit" value="Logout"/> -->
+    		<a href="#" onclick="document.getElementById('logout123').submit();">Logout</a>
+    		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+		</form>		
+	</p>
+	
 </body>
 
 </html>

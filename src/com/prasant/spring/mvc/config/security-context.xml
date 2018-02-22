@@ -30,8 +30,12 @@
 		<security:intercept-url pattern="/createaccount" access="permitAll" />
 		<security:intercept-url pattern="/accountcreated" access="permitAll" />
 		<security:intercept-url pattern="/offers" access="permitAll" />
+		<security:intercept-url pattern="/logout" access="permitAll" />
 		<security:intercept-url pattern="/**" access="denyAll" />
 		<security:form-login login-page="/login"
 			authentication-failure-url="/login?error=true" />
+		<security:logout logout-success-url="/logout"
+			invalidate-session="true" logout-url="/logout" />
 	</security:http>
+	
 </beans>
