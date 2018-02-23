@@ -1,5 +1,7 @@
 package com.prasant.spring.mvc.controller;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.apache.derby.shared.common.error.DerbySQLIntegrityConstraintViolationException;
@@ -40,7 +42,7 @@ public class LoginController {
 		user.setAuthority("ROLE_USER");
 		user.setEnabled(true);
 		
-		if (userService.exitUser(user.getUsername())) {
+		if (userService.userExists(user.getUsername())) {
 			bindingResult.rejectValue("username", "DuplicateKey.user.username");
 			return "newaccount";
 		}
@@ -56,6 +58,13 @@ public class LoginController {
 	@RequestMapping("/logout")
 	public String showLogout() {
 		return "logout";
+	}
+	
+	@RequestMapping("/admin")
+	public String showAdmin(Model model) {
+		List<User> users = userService.getUsers();
+		model.addAttribute("users", users);
+		return "admin";
 	}
 
 }

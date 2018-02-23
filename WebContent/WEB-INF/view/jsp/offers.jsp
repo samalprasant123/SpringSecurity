@@ -13,6 +13,7 @@
 </head>
 
 <body>
+	<h2 align="center">Current Offers</h2>
 	<table class="offerDisplayTable" align="center">
 		<thead>
 			<tr>

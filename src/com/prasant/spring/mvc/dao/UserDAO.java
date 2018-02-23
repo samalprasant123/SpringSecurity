@@ -1,8 +1,11 @@
 package com.prasant.spring.mvc.dao;
 
+import java.util.List;
+
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
@@ -35,5 +38,10 @@ public class UserDAO {
 		MapSqlParameterSource paramMap = new MapSqlParameterSource();
 		paramMap.addValue("username", username);
 		return jdbcTemplate.queryForObject(sql, paramMap, Integer.class) == 1;
+	}
+
+	public List<User> getUsers() {
+		String sql = "SELECT * FROM users, authorities where users.username = authorities.username";
+		return jdbcTemplate.query(sql, BeanPropertyRowMapper.newInstance(User.class));
 	}
 }

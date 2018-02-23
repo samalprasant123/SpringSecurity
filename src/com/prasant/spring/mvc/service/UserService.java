@@ -1,5 +1,7 @@
 package com.prasant.spring.mvc.service;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,8 +20,12 @@ public class UserService {
 		return userDao.create(user);
 	}
 
-	public boolean exitUser(String username) {
+	public boolean userExists(String username) {
 		return userDao.getUser(username);
+	}
+
+	public List<User> getUsers() {
+		return userDao.getUsers();
 	}
 
 }

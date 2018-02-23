@@ -14,11 +14,14 @@
 	<c:if test="${param.error == true}">
 		<p class="error">Incorrect Username or Password</p>
 	</c:if>
-	<form name="f" action="${pageContext.request.contextPath}/login" method="POST">
+	<form name="f" action="${pageContext.request.contextPath}/login"
+		method="POST">
 		<table class="offertable">
 			<tr>
 				<td>Username:</td>
-				<td><input type="text" name="username" value="" /></td>
+				<td><input type="text" name="username" value="" />
+					<input name="${_csrf.parameterName}" type="hidden" value="${_csrf.token}" />
+				</td>
 			</tr>
 			<tr>
 				<td>Password:</td>
@@ -29,14 +32,13 @@
 				<td colspan="2"><input name="submit" type="submit"
 					value="Login" /></td>
 			</tr>
-			<input name="${_csrf.parameterName}" type="hidden"
-				value="${_csrf.token}" />
 		</table>
 	</form>
 	<br>
 	<p>
-		<a href="${pageContext.request.contextPath}/newaccount">Create Account</a>
+		<a href="${pageContext.request.contextPath}/newaccount">Create
+			Account</a>
 	</p>
-	
+
 </body>
 </html>
