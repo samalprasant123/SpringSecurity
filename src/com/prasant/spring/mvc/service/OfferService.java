@@ -3,6 +3,7 @@ package com.prasant.spring.mvc.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Service;
 
 import com.prasant.spring.mvc.dao.OfferDAO;
@@ -18,6 +19,7 @@ public class OfferService {
 		return offerDao.getOffers();
 	}
 	
+	@Secured({"ROLE_USER", "ROLE_ADMIN"})
 	public boolean createOffer(Offer offer) {
 		return offerDao.create(offer);
 	}
