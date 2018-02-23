@@ -5,6 +5,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Service;
 
 import com.prasant.spring.mvc.dao.UserDAO;
@@ -24,6 +25,7 @@ public class UserService {
 		return userDao.getUser(username);
 	}
 
+	@Secured("ROLE_ADMIN")
 	public List<User> getUsers() {
 		return userDao.getUsers();
 	}
